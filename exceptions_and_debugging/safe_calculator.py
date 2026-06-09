@@ -63,3 +63,28 @@ Calculation finished
 =================================================
 
 """
+def safe_divide(a, b):
+    try:
+        a = float(a)
+        b = float(b)
+        result = a / b
+    except ValueError:
+        return ("error", "Inputs must be numbers")
+    except ZeroDivisionError:
+        return ("error", "Cannot divide by zero")
+    except Exception as e:
+        return ("error", f"An unexpected error occurred: {e}")
+    else:
+        return ("ok", result)
+    finally:
+        print("Calculation finished")
+
+#Input Example 1:
+print(safe_divide("ten", "2"))
+
+#Input Example 2:
+print(safe_divide("10", "0"))
+
+#Input Example 3:
+print(safe_divide("10", "2"))
+
